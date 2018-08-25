@@ -110,7 +110,7 @@ dependency_hash <- function(target, config) {
   }
   sort(as.character(unique(deps))) %>%
     self_hash(config = config) %>%
-    digest::digest(algo = config$long_hash_algo)
+    fastdigest::fastdigest()
 }
 
 input_file_hash <- function(
