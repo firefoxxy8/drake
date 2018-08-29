@@ -191,8 +191,7 @@ mc_output_file_checksum <- function(target, config){
     FUN.VALUE = character(1),
     config = config
   ) %>%
-    paste(collapse = "") %>%
-    digest::digest(algo = config$long_hash_algo, serialize = FALSE)
+    fastdigest::fastdigest()
 }
 
 mc_is_good_checksum <- function(target, checksum, config){

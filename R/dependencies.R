@@ -168,17 +168,9 @@ dependency_profile <- function(
   )] %>%
     unlist() %>%
     unname()
-  old_hashes[1] <- digest::digest(
-    paste(old_hashes[1], collapse = ""),
-    algo = config$long_hash_algo,
-    serialize = FALSE
-  )
+  old_hashes[1] <- fastdigest::fastdigest(old_hashes[1])
   new_hashes <- c(
-    digest::digest(
-      paste(get_standardized_command(target, config), collapse = ""),
-      algo = config$long_hash_algo,
-      serialize = FALSE
-    ),
+    fastdigest::fastdigest(get_standardized_command(target, config)),
     dependency_hash(target, config),
     input_file_hash(target, config),
     output_file_hash(target, config)

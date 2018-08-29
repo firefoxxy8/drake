@@ -110,8 +110,7 @@ dependency_hash <- function(target, config) {
   }
   sort(as.character(unique(deps))) %>%
     self_hash(config = config) %>%
-    paste(collapse = "") %>%
-    digest::digest(algo = config$long_hash_algo, serialize = FALSE)
+    fastdigest::fastdigest()
 }
 
 input_file_hash <- function(
@@ -132,8 +131,7 @@ input_file_hash <- function(
     config = config,
     size_cutoff = size_cutoff
   ) %>%
-    paste(collapse = "") %>%
-    digest::digest(algo = config$long_hash_algo, serialize = FALSE)
+    fastdigest::fastdigest()
 }
 
 output_file_hash <- function(
@@ -154,8 +152,7 @@ output_file_hash <- function(
     config = config,
     size_cutoff = size_cutoff
   ) %>%
-    paste(collapse = "") %>%
-    digest::digest(algo = config$long_hash_algo, serialize = FALSE)
+    fastdigest::fastdigest()
 }
 
 self_hash <- Vectorize(function(target, config) {

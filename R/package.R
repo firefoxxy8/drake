@@ -41,6 +41,7 @@
 #' @importFrom digest digest
 #' @importFrom dplyr bind_rows do group_by mutate n select ungroup
 #' @importFrom evaluate try_capture_stack
+#' @importFrom fastdigest fastdigest
 #' @importFrom formatR tidy_source
 #' @importFrom fs dir_create file_create path_ext path_ext_remove
 #' @importFrom future plan
